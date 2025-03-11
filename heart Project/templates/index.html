@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* Overall page and background styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/1.JPG');  /* Ensure this path is correct */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px; /* Wider form for better input alignment */
+            padding: 20px;
+        }
+
+        .form-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        /* Styling labels and inputs for proper alignment */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Focus and hover effects for inputs */
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+        }
+
+        /* Styling for the submit button */
+        button {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Hover effect for button */
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Prediction result styling */
+        h2 {
+            color: #f39c12;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Heart Disease Prediction</h1>
+            <form action="/predict" method="POST">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="sex">Sex:</label>
+                <input type="number" id="sex" name="sex" required>
+
+                <label for="cp">Chest Pain Type:</label>
+                <input type="number" id="cp" name="cp" required>
+
+                <label for="bp">Blood Pressure (BP):</label>
+                <input type="number" id="bp" name="bp" required>
+
+                <label for="chol">Cholesterol:</label>
+                <input type="number" id="chol" name="chol" required>
+
+                <label for="fbs">Fasting Blood Sugar (FBS):</label>
+                <input type="number" id="fbs" name="fbs" required>
+
+                <label for="ekg">EKG Results:</label>
+                <input type="number" id="ekg" name="ekg" required>
+
+                <label for="thalach">Max HR:</label>
+                <input type="number" id="thalach" name="thalach" required>
+
+                <label for="exang">Exercise Angina:</label>
+                <input type="number" id="exang" name="exang" required>
+
+                <label for="oldpeak">ST Depression:</label>
+                <input type="number" id="oldpeak" name="oldpeak" required>
+
+                <label for="slope">Slope of ST:</label>
+                <input type="number" id="slope" name="slope" required>
+
+                <label for="ca">Number of Vessels Fluro:</label>
+                <input type="number" id="ca" name="ca" required>
+
+                <label for="thal">Thallium:</label>
+                <input type="number" id="thal" name="thal" required>
+
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if result %}
+            <h2>Prediction: {{ result }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
